@@ -4,8 +4,8 @@ import os
 
 requests.packages.urllib3.disable_warnings()
 
-def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
-            base_url=os.environ.get('BASE_URL'), ):
+def checkin(email=os.environ.get('AP_EMAILS'), password=os.environ.get('AP_PASSWORDS'),
+            base_url=os.environ.get('AP_DOMAINS'), ):
     email = email.split('@')
     email = email[0] + '%40' + email[1]
     session = requests.session()
