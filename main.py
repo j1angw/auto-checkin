@@ -3,10 +3,6 @@ import json
 import os
 
 requests.packages.urllib3.disable_warnings()
-SCKEY = os.environ.get('SCKEY')
-TG_BOT_TOKEN = os.environ.get('TGBOT')
-TG_USER_ID = os.environ.get('TGUSERID')
-
 
 def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
             base_url=os.environ.get('BASE_URL'), ):
@@ -38,9 +34,3 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 
 
 result = checkin()
-if SCKEY != '':
-    sendurl = 'https://sctapi.ftqq.com/' + SCKEY + '.send?title=机场签到&desp=' + result
-    r = requests.get(url=sendurl)
-if TG_USER_ID != '':
-    sendurl = f'https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage?chat_id={TG_USER_ID}&text={result}&disable_web_page_preview=True'
-    r = requests.get(url=sendurl)
